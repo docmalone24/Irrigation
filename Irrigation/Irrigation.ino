@@ -24,61 +24,61 @@ void setup() {
   pinMode(Pin3, INPUT);
   pinMode(Pin4, INPUT);
   
-  digitalWrite(IN1, HIGH);
-  digitalWrite(IN2, HIGH);
-  digitalWrite(IN3, HIGH);
-  digitalWrite(IN4, HIGH);
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, LOW);
   delay(500);
 }
 void loop() {
 
-  Serial.print("MOISTURE LEVEL:");
+  Serial.print("MOISTURE LEVEL 1:");
   value1 = analogRead(Pin1);
   Serial.println(value1);
-  if(value1>750)
+  if(value1<350)
   {
-      digitalWrite(IN1, LOW);
+      digitalWrite(IN1, HIGH);
   }
   else
   {
-    digitalWrite(IN1, HIGH);
+    digitalWrite(IN1, LOW);
     }
     
-  Serial.print("MOISTURE LEVEL:");
+  Serial.print("MOISTURE LEVEL 2:");
   value2 = analogRead(Pin2);
   Serial.println(value2);
-  if(value2>750)
+  if(value2<350)
   {
-      digitalWrite(IN2, LOW);
+      digitalWrite(IN2, HIGH);
   }
   else
   {
-    digitalWrite(IN2, HIGH);
+    digitalWrite(IN2, LOW);
     }
 
-  Serial.print("MOISTURE LEVEL:");
+  Serial.print("MOISTURE LEVEL 3:");
   value3 = analogRead(Pin3);
   Serial.println(value3);
-  if(value3>750)
+  if(value3<350)
   {
-      digitalWrite(IN3, LOW);
+      digitalWrite(IN3, HIGH);
   }
   else
   {
-    digitalWrite(IN3, HIGH);
+    digitalWrite(IN3, LOW);
     }
 
-  Serial.print("MOISTURE LEVEL:");
+  Serial.print("MOISTURE LEVEL 4:");
   value4 = analogRead(Pin4);
   Serial.println(value4);
-  if(value4>750)
+  if(value4<350)
   {
-      digitalWrite(IN4, LOW);
+      digitalWrite(IN4, HIGH);
   }
   else
   {
-    digitalWrite(IN4, HIGH);
+    digitalWrite(IN4, LOW);
     }
     Serial.println();
-  delay(1000);
+  delay(5000);
 }
