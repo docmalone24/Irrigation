@@ -83,5 +83,5 @@ void loop() {
 //     digitalWrite(IN4, LOW);
 //     }
     Serial.println();
-  delay(5000);
+  delay(1000);
 }
