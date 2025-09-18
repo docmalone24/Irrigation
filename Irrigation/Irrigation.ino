@@ -3,6 +3,9 @@ int IN2 = 3;
 int IN3 = 4;
 int IN4 = 5;
 
+int hasRun = 8;
+int runCheck = 0;
+
 int Pin1 = A0; 
 int Pin2 = A1;
 int Pin3 = A2;
@@ -28,6 +31,8 @@ void setup() {
   pinMode(IN2, OUTPUT);
   pinMode(IN3, OUTPUT);
   pinMode(IN4, OUTPUT);
+
+  pinMode(hasRun, OUTPUT);
   
   pinMode(Pin1, INPUT);
   pinMode(Pin2, INPUT);
@@ -38,6 +43,7 @@ void setup() {
   digitalWrite(IN2, HIGH);
   digitalWrite(IN3, HIGH);
   digitalWrite(IN4, HIGH);
+  digitalWrite(hasRun, LOW);
   delay(500);
 }
 void loop() {
@@ -60,11 +66,20 @@ else
       if (channelTime1 > 0){
         channelTime1--;
       }
+      if (runCheck > 0 ) {
+        digitalWrite(hasRun, HIGH);
+        delay(500);
+        digitalWrite(hasRun, LOW);
+        Serial.print("Irrigation has run ");
+        Serial.print(runCheck);
+        Serial.println(" times.");
+      }
   }
   else if (value1 >= 500 && channelTime1 < 8)
   {
     digitalWrite(IN1, LOW);
     channelTime1++;
+    runCheck++;
     }
   else if (value1 >= 500 && channelTime1 >= 8)  //this would indicate that the soil is dry and the channel has tried to fill it
   {
@@ -92,6 +107,7 @@ else
   {
     digitalWrite(IN2, LOW);
     channelTime2++;
+    runCheck++;
     }
   else if (value2 >= 500 && channelTime2 >= 8)  //this would indicate that the soil is dry and the channel has tried to fill it
   {
@@ -119,6 +135,7 @@ else
   {
     digitalWrite(IN3, LOW);
     channelTime3++;
+    runCheck++;
     }
   else if (value3 >= 500 && channelTime3 >= 8)  //this would indicate that the soil is dry and the channel has tried to fill it
   {
@@ -146,6 +163,7 @@ else
 //   {
 //     digitalWrite(IN4, LOW);
 //     channelTime4++;
+//     runCheck++;
 //     }
 //   else if (value4 >= 500 && channelTime4 >= 8)  //this would indicate that the soil is dry and the channel has tried to fill it
 //   {
